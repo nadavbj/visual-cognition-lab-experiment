@@ -22,12 +22,14 @@ public class CameraDisplay extends Thread {
 	private VideoCapture capture2;
 	private int FRAMEWIDTH = 640;
 	private int FRAMEHEIGHT = 480;
+	private String path;
 
 	/**
 	 * Constructor for a new camera display (loads the opencv library)
 	 */
-	public CameraDisplay () {
+	public CameraDisplay (String path) {
 		System.loadLibrary("opencv_java2413");
+		this.path = path;
 		
 	}
 	
@@ -79,7 +81,8 @@ public class CameraDisplay extends Thread {
 		this.capture2.set(Highgui.CV_CAP_PROP_FRAME_WIDTH, this.FRAMEWIDTH);
 		this.capture2.set(Highgui.CV_CAP_PROP_FRAME_HEIGHT, this.FRAMEHEIGHT);
 		System.out.println("Streams opened.");
-		
+
+
 		Date date;		
 		//If a webcam has been started..
 		if (this.capture1.isOpened() && this.capture2.isOpened()) {
@@ -99,8 +102,8 @@ public class CameraDisplay extends Thread {
 					date = new Date();
 					try 
 					{
-						ImageIO.write(cameraPanel1.getBufferedImage(), "BMP", new File("C:/Users/Omer/eclipse_java_workspace/Experiment/cam1/" + date.getHours() + "-" + date.getMinutes() + "-" + date.getSeconds() + "-" + date.getTime() +  ".bmp"));
-						ImageIO.write(cameraPanel2.getBufferedImage(), "BMP", new File("C:/Users/Omer/eclipse_java_workspace/Experiment/cam2/" + date.getHours() + "-" + date.getMinutes() + "-" + date.getSeconds() + "-" + date.getTime() +  ".bmp"));
+						ImageIO.write(cameraPanel1.getBufferedImage(), "BMP", new File(path + "/cam1/" + date.getHours() + "-" + date.getMinutes() + "-" + date.getSeconds() + "-" + date.getTime() +  ".bmp"));
+						ImageIO.write(cameraPanel2.getBufferedImage(), "BMP", new File(path + "/cam2/" + date.getHours() + "-" + date.getMinutes() + "-" + date.getSeconds() + "-" + date.getTime() +  ".bmp"));
 					} 
 					catch (IOException e) 
 					{

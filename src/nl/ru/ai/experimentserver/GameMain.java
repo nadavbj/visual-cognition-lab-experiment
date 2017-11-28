@@ -3,10 +3,7 @@ package nl.ru.ai.experimentserver;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.*;
 
 import java.util.Date;
 
@@ -23,10 +20,18 @@ public class GameMain implements KeyListener {
 	/**
 	 * Constructor for a new game
 	 */
-	public GameMain () {
+	public GameMain (String path, String names) {
 		//Create the writer that writes to a txt file
 		try {
-			this.writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("C:/Users/Omer/eclipse_java_workspace/Experiment/eventlog.txt"), "utf-8"));
+			File newDir = new File(path);
+			if (newDir.exists()){
+				System.err.println("Error: participants directory already exist. please try with other names.");
+				System.exit(1);
+			}
+			newDir.mkdir();
+			new File(path + "/cam1/").mkdir();
+			new File(path + "/cam2/").mkdir();
+			this.writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path + "/" + "eventlog_"+ names +".txt"), "utf-8"));
 		}
 		catch (Exception e) {
 			System.out.println("Error in writer");
