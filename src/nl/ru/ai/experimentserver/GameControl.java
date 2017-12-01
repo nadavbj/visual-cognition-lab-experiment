@@ -106,9 +106,7 @@ public class GameControl
 	 */
 	public void setPlayer1Chose (boolean bool) {
 		this.model.setPlayer1Chose(bool);
-		if(getPlayer2Chose()){
-			updateScore();
-		}
+		updateScore();
 	}
 	
 	/**
@@ -125,9 +123,11 @@ public class GameControl
 	 */
 	public void setPlayer2Chose (boolean bool) {
 		this.model.setPlayer2Chose(bool);
-		if(getPlayer1Chose()){
-			updateScore();
-		}
+		updateScore();
+	}
+
+	public void refresh() {
+		this.model.refresh();
 		
 	}
 }

@@ -3,10 +3,7 @@ package nl.ru.ai.experimentserver;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.*;
 
 import java.util.Date;
 
@@ -23,10 +20,18 @@ public class GameMain implements KeyListener {
 	/**
 	 * Constructor for a new game
 	 */
-	public GameMain () {
+	public GameMain (String path, String names) {
 		//Create the writer that writes to a txt file
 		try {
-			this.writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("C:/Users/Omer/eclipse_java_workspace/Experiment/eventlog.txt"), "utf-8"));
+			File newDir = new File(path);
+			if (newDir.exists()){
+				System.err.println("Error: participants directory already exist. please try with other names.");
+				System.exit(1);
+			}
+			newDir.mkdir();
+			new File(path + "/cam1/").mkdir();
+			new File(path + "/cam2/").mkdir();
+			this.writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path + "/" + "eventlog_"+ names +".txt"), "utf-8"));
 		}
 		catch (Exception e) {
 			System.out.println("Error in writer");
@@ -54,8 +59,8 @@ public class GameMain implements KeyListener {
 		switch(e.getKeyChar()) {
 			case 'a': 
 				if(!this.control.getPlayer1Chose()) {
+					
 					this.model.setPlayer1LastChoice("A");
-					this.control.setPlayer1Chose(true);
 					//System.out.println('a');
 					Date d = new Date();
 					try {
@@ -64,12 +69,14 @@ public class GameMain implements KeyListener {
 					catch (IOException e1) {
 						e1.printStackTrace();
 					}
+					
+					this.control.setPlayer1Chose(true);
 				}
 				break;
 			case 's': 
 				if(!this.control.getPlayer1Chose()) {
+					
 					this.model.setPlayer1LastChoice("B"); 
-					this.control.setPlayer1Chose(true);
 					//System.out.println('s'); 
 					Date d = new Date();
 					try {
@@ -79,12 +86,14 @@ public class GameMain implements KeyListener {
 					{
 						e1.printStackTrace();
 					}
+					
+					this.control.setPlayer1Chose(true);
 				}
 				break;
 			case 'k': 
 				if(!this.control.getPlayer2Chose()) {
+					
 					this.model.setPlayer2LastChoice("A"); 
-					this.control.setPlayer2Chose(true);
 					//System.out.println('k'); 
 					Date d = new Date();
 					try {
@@ -93,13 +102,14 @@ public class GameMain implements KeyListener {
 					catch (IOException e1) {
 						e1.printStackTrace();
 					}
-					break;
+					
+					this.control.setPlayer2Chose(true);
 				}
 				break;
 			case 'l': 
 				if(!this.control.getPlayer2Chose()) {
+					
 					this.model.setPlayer2LastChoice("B");
-					this.control.setPlayer2Chose(true);
 					//System.out.println('l'); 
 					Date d = new Date();
 					try {
@@ -108,7 +118,12 @@ public class GameMain implements KeyListener {
 					catch (IOException e1) {
 						e1.printStackTrace();
 					}
+
+					this.control.setPlayer2Chose(true);
 				}
+				break;
+			case ' ':
+				this.control.refresh();
 				break;
 		}
 	}

@@ -213,4 +213,11 @@ public class GameModel extends Observable
 	{
 		this.player2LastChoice = player2LastChoice;
 	}
+
+	public void refresh() {
+		setChanged();
+		notifyObservers();
+		clearChanged();
+		
+	}
 }
