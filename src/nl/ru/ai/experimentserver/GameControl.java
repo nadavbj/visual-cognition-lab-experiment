@@ -125,4 +125,9 @@ public class GameControl
 		this.model.setPlayer2Chose(bool);
 		updateScore();
 	}
+
+	public void refresh() {
+		this.model.refresh();
+		
+	}
 }

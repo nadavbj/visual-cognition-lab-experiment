@@ -23,7 +23,7 @@ public class GameDisplay extends JFrame implements Observer {
 	private GameModel model;
 	private int player; 
 	private JLabel scoresLabel;
-	
+	private JLabel playerLabel = new JLabel();
 	/**
 	 * Constructor
 	 * @param model
@@ -43,12 +43,12 @@ public class GameDisplay extends JFrame implements Observer {
 		
 		//Create the content of the infopanel
 		JPanel infoPanel = new JPanel();
-		infoPanel.setSize(600,800);
+		infoPanel.setSize(500,500);
 		this.setContentPane(infoPanel);
 		infoPanel.setVisible(true);
 		
 		//Display the right player info on the infopanel ("RED" or "GREEN");
-		JLabel playerLabel = new JLabel();
+		
 		if (player == 1) {
 			playerLabel.setText("<html><br><h1><br>You are the <font size='10' color=#01DF01>GREEN</font> player!</h1><br><br><br><html>");
 		}
@@ -92,6 +92,7 @@ public class GameDisplay extends JFrame implements Observer {
 	public void update(Observable arg0, Object arg1) 
 	{
 		if (this.player == 1) {
+			this.playerLabel.setText("<html><br><h1><br>You are the <font size='10' color=#01DF01>GREEN</font> player!</h1><br><br><br><html>");
 			if (this.model.getRound() > this.model.getMaxRounds()) {
 				this.scoresLabel.setText("<html><h2><br><br>END OF GAME! :)" + "<br>Your last choice: " + this.model.getPlayer1LastChoice() + "<br>Your last score was: " + this.model.getPlayer1RoundScore() + "<br>Your total score is: " + this.model.getPlayer1TotalScore() + "<br>Your opponents' score is: " + this.model.getPlayer2TotalScore() + " </h2><br>Please make your choice.." + "<br><br>(To choose 'A' press 'A', to choose 'B' press 'S')</html>");
 			}
@@ -115,6 +116,7 @@ public class GameDisplay extends JFrame implements Observer {
 			}
 		}
 		if (this.player == 2) {
+			playerLabel.setText("<html><br><h1><br>You are the <font size='10' color=#DF0101>RED</font> player!</h1><br><br><br><html>");
 			if (this.model.getRound() > this.model.getMaxRounds()) {
 				this.scoresLabel.setText("<html><h2><br><br>END OF GAME! :)" + "<br>Your last choice: " + this.model.getPlayer2LastChoice() + "<br>Your last score was: " + this.model.getPlayer2RoundScore() + "<br>Your total score is: " + this.model.getPlayer2TotalScore() + "<br>Your opponents' score is: " + this.model.getPlayer1TotalScore() + " </h2><br>Please make your choice.." + "<br><br>(To choose 'A' press 'K', to choose 'B' press 'L')</html>");
 			}
@@ -137,6 +139,7 @@ public class GameDisplay extends JFrame implements Observer {
 				}
 			}
 		}
+		this.playerLabel.repaint();
 		this.scoresLabel.repaint();
 	}
 

@@ -17,7 +17,7 @@ public class Main {
           System.exit(1);
       }
       String names = args[0];
-      String results_path = "C:\\Users\\omer.benchetrit\\Documents\\Studies\\University\\Project\\experiment code\\Experiment\\Results\\";
+      String results_path = "Results/";
       String path = results_path + names;
 
 	  setUpGame(path, names);

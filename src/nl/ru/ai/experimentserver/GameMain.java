@@ -59,8 +59,8 @@ public class GameMain implements KeyListener {
 		switch(e.getKeyChar()) {
 			case 'a': 
 				if(!this.control.getPlayer1Chose()) {
+					
 					this.model.setPlayer1LastChoice("A");
-					this.control.setPlayer1Chose(true);
 					//System.out.println('a');
 					Date d = new Date();
 					try {
@@ -69,12 +69,14 @@ public class GameMain implements KeyListener {
 					catch (IOException e1) {
 						e1.printStackTrace();
 					}
+					
+					this.control.setPlayer1Chose(true);
 				}
 				break;
 			case 's': 
 				if(!this.control.getPlayer1Chose()) {
+					
 					this.model.setPlayer1LastChoice("B"); 
-					this.control.setPlayer1Chose(true);
 					//System.out.println('s'); 
 					Date d = new Date();
 					try {
@@ -84,12 +86,14 @@ public class GameMain implements KeyListener {
 					{
 						e1.printStackTrace();
 					}
+					
+					this.control.setPlayer1Chose(true);
 				}
 				break;
 			case 'k': 
 				if(!this.control.getPlayer2Chose()) {
+					
 					this.model.setPlayer2LastChoice("A"); 
-					this.control.setPlayer2Chose(true);
 					//System.out.println('k'); 
 					Date d = new Date();
 					try {
@@ -98,13 +102,14 @@ public class GameMain implements KeyListener {
 					catch (IOException e1) {
 						e1.printStackTrace();
 					}
-					break;
+					
+					this.control.setPlayer2Chose(true);
 				}
 				break;
 			case 'l': 
 				if(!this.control.getPlayer2Chose()) {
+					
 					this.model.setPlayer2LastChoice("B");
-					this.control.setPlayer2Chose(true);
 					//System.out.println('l'); 
 					Date d = new Date();
 					try {
@@ -113,7 +118,12 @@ public class GameMain implements KeyListener {
 					catch (IOException e1) {
 						e1.printStackTrace();
 					}
+
+					this.control.setPlayer2Chose(true);
 				}
+				break;
+			case ' ':
+				this.control.refresh();
 				break;
 		}
 	}
