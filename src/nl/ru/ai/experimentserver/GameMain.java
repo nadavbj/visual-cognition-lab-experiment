@@ -5,6 +5,8 @@ import java.awt.event.KeyListener;
 
 import java.io.*;
 
+import org.apache.commons.io.*;
+
 import java.util.Date;
 
 /**
@@ -16,7 +18,8 @@ public class GameMain implements KeyListener {
 	private BufferedWriter writer;
 	private GameModel model;
 	private GameControl control;
-	
+	private File cam1_folder;
+	private File cam2_folder;
 	/**
 	 * Constructor for a new game
 	 */
@@ -29,8 +32,10 @@ public class GameMain implements KeyListener {
 				System.exit(1);
 			}
 			newDir.mkdir();
-			new File(path + "/cam1/").mkdir();
-			new File(path + "/cam2/").mkdir();
+			cam1_folder = new File(path + "/cam1/");
+			cam2_folder = new File(path + "/cam2/");
+			cam1_folder.mkdir();
+			cam2_folder.mkdir();
 			this.writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path + "/" + "eventlog_"+ names +".txt"), "utf-8"));
 		}
 		catch (Exception e) {
@@ -125,6 +130,16 @@ public class GameMain implements KeyListener {
 			case ' ':
 				this.control.refresh();
 				break;
+			case '$':
+			try {
+				FileUtils.cleanDirectory(cam1_folder);
+				FileUtils.cleanDirectory(cam2_folder);
+				System.out.println("the directories are now clean.");
+			} catch (IOException e1) {
+				System.out.println("Error: can't clean directories. try again.");
+				e1.printStackTrace();
+			}
+			break;
 		}
 	}
 

@@ -1,8 +1,11 @@
 package nl.ru.ai.experimentserver;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -16,13 +19,14 @@ import org.opencv.highgui.VideoCapture;
  * @author Tessa Beinema
  *
  */
-public class CameraDisplay extends Thread {
+public class CameraDisplay extends Thread implements KeyListener {
 	
 	private VideoCapture capture1;
 	private VideoCapture capture2;
 	private int FRAMEWIDTH = 640;
 	private int FRAMEHEIGHT = 480;
 	private String path;
+	private boolean started = false;
 
 	/**
 	 * Constructor for a new camera display (loads the opencv library)
@@ -81,15 +85,21 @@ public class CameraDisplay extends Thread {
 		this.capture2.set(Highgui.CV_CAP_PROP_FRAME_WIDTH, this.FRAMEWIDTH);
 		this.capture2.set(Highgui.CV_CAP_PROP_FRAME_HEIGHT, this.FRAMEHEIGHT);
 		System.out.println("Streams opened.");
-
-
+		
+		char c;
+		Scanner reader = new Scanner(System.in);
+		while(!started){
+//			c = reader.next().charAt(0);
+//			if(c=='t')
+//				started = true;
+		}
+		
 		Date date;		
 		//If a webcam has been started..
 		if (this.capture1.isOpened() && this.capture2.isOpened()) {
 			while (true) {
 				this.capture1.read(webcamImage1);
 				this.capture2.read(webcamImage2);
-				
 				//If images have been read from the webcam 
 				if (!webcamImage1.empty() && !webcamImage2.empty()) {
 					//Display on camera panel
@@ -98,6 +108,7 @@ public class CameraDisplay extends Thread {
 					
 					cameraPanel2.MatToBufferedImage(webcamImage2);
 					cameraPanel2.repaint();
+					
 					
 					date = new Date();
 					try 
@@ -120,6 +131,26 @@ public class CameraDisplay extends Thread {
 			System.out.println("ERROR: Failed to open one of the webcams.");
 		}
 		return;
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyChar() =='t'){
+			started = true;
+		}
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 
