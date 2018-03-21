@@ -36,7 +36,7 @@ public class GameDisplay extends JFrame implements Observer {
 		//Set various settings of the JFrame
 		this.setTitle("Experiment");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(500, 600);
+		this.setSize(400, 600);
 		this.setResizable(false);
 		this.setLocation(740, 0);
 		this.setVisible(true);
@@ -50,10 +50,10 @@ public class GameDisplay extends JFrame implements Observer {
 		//Display the right player info on the infopanel ("RED" or "GREEN");
 		
 		if (player == 1) {
-			playerLabel.setText("<html><br><h1><br>You are the <font size='10' color=#01DF01>GREEN</font> player!</h1><br><br><br><html>");
+			playerLabel.setText("<html><br><h1><br>את/ה שחקן מספר <font size='10'>1</font></h1><br><br><br><html>");
 		}
 		else if(player == 2) {
-			playerLabel.setText("<html><br><h1><br>You are the <font size='10' color=#DF0101>RED</font> player!</h1><br><br><br><html>");
+			playerLabel.setText("<html><br><h1><br>את/ה שחקן מספר <font size='10'>2</font></h1><br><br><br><html>");
 		}
 		playerLabel.setAlignmentY(Component.CENTER_ALIGNMENT);
 		infoPanel.add(playerLabel);
@@ -72,10 +72,10 @@ public class GameDisplay extends JFrame implements Observer {
 		//Display the scores, choices, etc
 		this.scoresLabel = new JLabel();
 		if (player == 1) {
-			this. scoresLabel.setText("<html><h2><br><br>Round: " + this.model.getRound() + "<br>Your last choice: " + this.model.getPlayer1LastChoice() + "<br>Your last score was: " + this.model.getPlayer1RoundScore() + "<br>Your total score is: " + this.model.getPlayer1TotalScore() + "<br>Your opponents' score is: " + this.model.getPlayer2TotalScore() + " </h2><br><font size='6'>Please make your choice.." + "</font><br><br>(To choose 'A' press 'A', to choose 'B' press 'S')</html>");
+			this.scoresLabel.setText("<html><h2><br><br>סבב מספר: " + this.model.getRound() + "<br>בחירתך בסבב הקודם: " + this.model.getPlayer1LastChoice() + "<br>ניקוד שצברת בסבב הקודם: " + this.model.getPlayer1RoundScore() + "<br>סך הניקוד המצטבר שלך: " + this.model.getPlayer1TotalScore() + "<br>סך הניקוד המצטבר של היריב/ה: " + this.model.getPlayer2TotalScore() + " </h2><br><font size='6'>בבקשה בצע/י בחירתך" + "</font><br><br></html>");
 		}
 		else if (player == 2) {
-			this.scoresLabel.setText("<html><h2><br><br>Round: " + this.model.getRound() + "<br>Your last choice: " + this.model.getPlayer2LastChoice() +  "<br>Your last score was: " + this.model.getPlayer2RoundScore() + "<br>Your total score is: " + this.model.getPlayer1TotalScore() + "<br>Your opponents' score is: " + this.model.getPlayer2TotalScore() + " </h2><br><font size='6'>Please make your choice.." + "</font><br><br>(To choose 'A' press 'K', to choose 'B' press 'L')</html>");
+			this.scoresLabel.setText("<html><h2><br><br>סבב מספר: " + this.model.getRound() + "<br>בחירתך בסבב הקודם: " + this.model.getPlayer2LastChoice() +  "<br>ניקוד שצברת בסבב הקודם: " + this.model.getPlayer2RoundScore() + "<br>סך הניקוד המצטבר שלך: " + this.model.getPlayer1TotalScore() + "<br>סך הניקוד המצטבר של היריב/ה: " + this.model.getPlayer2TotalScore() + " </h2><br><font size='6'>בבקשה בצע/י בחירתך" + "</font><br><br></html>");
 		}
 		infoPanel.add(this.scoresLabel);
 	}
@@ -92,50 +92,50 @@ public class GameDisplay extends JFrame implements Observer {
 	public void update(Observable arg0, Object arg1) 
 	{
 		if (this.player == 1) {
-			this.playerLabel.setText("<html><br><h1><br>You are the <font size='10' color=#01DF01>GREEN</font> player!</h1><br><br><br><html>");
+			playerLabel.setText("<html><br><h1><br>את/ה שחקן מספר <font size='10'>1</font></h1><br><br><br><html>");
 			if (this.model.getRound() > this.model.getMaxRounds()) {
-				this.scoresLabel.setText("<html><h2><br><br>END OF GAME! :)" + "<br>Your last choice: " + this.model.getPlayer1LastChoice() + "<br>Your last score was: " + this.model.getPlayer1RoundScore() + "<br>Your total score is: " + this.model.getPlayer1TotalScore() + "<br>Your opponents' score is: " + this.model.getPlayer2TotalScore() + " </h2><br>Please make your choice.." + "<br><br>(To choose 'A' press 'A', to choose 'B' press 'S')</html>");
+				this.scoresLabel.setText("<html><h2><br><br>END OF GAME! :)" + "<br>בחירתך בסבב הקודם: " + this.model.getPlayer1LastChoice() + "<br>ניקוד שצברת בסבב הקודם: " + this.model.getPlayer1RoundScore() + "<br>סך הניקוד המצטבר שלך: " + this.model.getPlayer1TotalScore() + "<br>סך הניקוד המצטבר של היריב/ה: " + this.model.getPlayer2TotalScore() + " </h2><br>בבקשה בצע/י בחירתך" + "<br><br></html>");
 			}
 			else {
 				if (this.model.getPlayer1Chose() && this.model.getPlayer2Chose())
 				{
-					this.scoresLabel.setText("<html><h2><br><br>Round: " + this.model.getRound() + "<br>Your last choice: " + this.model.getPlayer1LastChoice() + "<br>Your last score was: " + this.model.getPlayer1RoundScore() + "<br>Your total score is: " + this.model.getPlayer1TotalScore() + "<br>Your opponents' score is: " + this.model.getPlayer2TotalScore() + " </h2><br><font size='6'>Please make your choice.." + "</font><br><br>(To choose 'A' press 'A', to choose 'B' press 'S')</html>");
+					this.scoresLabel.setText("<html><h2><br><br>סבב מספר: " + this.model.getRound() + "<br>בחירתך בסבב הקודם: " + this.model.getPlayer1LastChoice() + "<br>ניקוד שצברת בסבב הקודם: " + this.model.getPlayer1RoundScore() + "<br>סך הניקוד המצטבר שלך: " + this.model.getPlayer1TotalScore() + "<br>סך הניקוד המצטבר של היריב/ה: " + this.model.getPlayer2TotalScore() + " </h2><br><font size='6'>בבקשה בצע/י בחירתך" + "</font><br><br></html>");
 				}
 				else if (this.model.getPlayer1Chose() && !this.model.getPlayer2Chose())
 				{
-					this.scoresLabel.setText("<html><h2><br><br>Round: " + this.model.getRound() + "<br>Your last choice: " + this.model.getPlayer1LastChoice() + "<br>Your last score was: " + this.model.getPlayer1RoundScore() + "<br>Your total score is: " + this.model.getPlayer1TotalScore() + "<br>Your opponents' score is: " + this.model.getPlayer2TotalScore() + " </h2><br><font size='6'>You have chosen (" + this.model.getPlayer1LastChoice() + ")" + "</font><br><font size='6'> wait for the other player.." + "</font><br><br>(To choose 'A' press 'A', to choose 'B' press 'S')</html>");
+					this.scoresLabel.setText("<html><h2><br><br>סבב מספר: " + this.model.getRound() + "<br>בחירתך בסבב הקודם: " + this.model.getPlayer1LastChoice() + "<br>ניקוד שצברת בסבב הקודם: " + this.model.getPlayer1RoundScore() + "<br>סך הניקוד המצטבר שלך: " + this.model.getPlayer1TotalScore() + "<br>סך הניקוד המצטבר של היריב/ה: " + this.model.getPlayer2TotalScore() + " </h2><br><font size='6'>בחרת ב-(" + this.model.getPlayer1LastChoice() + ")" + "</font><br><font size='6'> אנא המתן/י לתגובת היריב.." + "</font><br><br></html>");
 				}
 				else if (!this.model.getPlayer1Chose() && this.model.getPlayer2Chose())
 				{
-					this.scoresLabel.setText("<html><h2><br><br>Round: " + this.model.getRound() + "<br>Your last choice: " + this.model.getPlayer1LastChoice() + "<br>Your last score was: " + this.model.getPlayer1RoundScore() + "<br>Your total score is: " + this.model.getPlayer1TotalScore() + "<br>Your opponents' score is: " + this.model.getPlayer2TotalScore() + " </h2><br><font size='6'>Please make your choice.." + "</font><br><br>(To choose 'A' press 'A', to choose 'B' press 'S')</html>");
+					this.scoresLabel.setText("<html><h2><br><br>סבב מספר: " + this.model.getRound() + "<br>בחירתך בסבב הקודם: " + this.model.getPlayer1LastChoice() + "<br>ניקוד שצברת בסבב הקודם: " + this.model.getPlayer1RoundScore() + "<br>סך הניקוד המצטבר שלך: " + this.model.getPlayer1TotalScore() + "<br>סך הניקוד המצטבר של היריב/ה: " + this.model.getPlayer2TotalScore() + " </h2><br><font size='6'>בבקשה בצע/י בחירתך" + "</font><br><br></html>");
 				}
 				else
 				{
-					this.scoresLabel.setText("<html><h2><br><br>Round: " + this.model.getRound() + "<br>Your last choice: " + this.model.getPlayer1LastChoice() + "<br>Your last score was: " + this.model.getPlayer1RoundScore() + "<br>Your total score is: " + this.model.getPlayer1TotalScore() + "<br>Your opponents' score is: " + this.model.getPlayer2TotalScore() + " </h2><br><font size='6'>Please make your choice.." + "</font><br><br>(To choose 'A' press 'A', to choose 'B' press 'S')</html>");
+					this.scoresLabel.setText("<html><h2><br><br>סבב מספר: " + this.model.getRound() + "<br>בחירתך בסבב הקודם: " + this.model.getPlayer1LastChoice() + "<br>ניקוד שצברת בסבב הקודם: " + this.model.getPlayer1RoundScore() + "<br>סך הניקוד המצטבר שלך: " + this.model.getPlayer1TotalScore() + "<br>סך הניקוד המצטבר של היריב/ה: " + this.model.getPlayer2TotalScore() + " </h2><br><font size='6'>בבקשה בצע/י בחירתך" + "</font><br><br></html>");
 				}
 			}
 		}
 		if (this.player == 2) {
-			playerLabel.setText("<html><br><h1><br>You are the <font size='10' color=#DF0101>RED</font> player!</h1><br><br><br><html>");
+			playerLabel.setText("<html><br><h1><br>את/ה שחקן מספר <font size='10'>2</font></h1><br><br><br><html>");
 			if (this.model.getRound() > this.model.getMaxRounds()) {
-				this.scoresLabel.setText("<html><h2><br><br>END OF GAME! :)" + "<br>Your last choice: " + this.model.getPlayer2LastChoice() + "<br>Your last score was: " + this.model.getPlayer2RoundScore() + "<br>Your total score is: " + this.model.getPlayer2TotalScore() + "<br>Your opponents' score is: " + this.model.getPlayer1TotalScore() + " </h2><br>Please make your choice.." + "<br><br>(To choose 'A' press 'K', to choose 'B' press 'L')</html>");
+				this.scoresLabel.setText("<html><h2><br><br>END OF GAME! :)" + "<br>בחירתך בסבב הקודם: " + this.model.getPlayer2LastChoice() + "<br>ניקוד שצברת בסבב הקודם: " + this.model.getPlayer2RoundScore() + "<br>סך הניקוד המצטבר שלך: " + this.model.getPlayer2TotalScore() + "<br>סך הניקוד המצטבר של היריב/ה: " + this.model.getPlayer1TotalScore() + " </h2><br>בבקשה בצע/י בחירתך" + "<br><br></html>");
 			}
 			else {
 				if (this.model.getPlayer1Chose() && this.model.getPlayer2Chose())
 				{
-					this.scoresLabel.setText("<html><h2><br><br>Round: " + this.model.getRound() + "<br>Your last choice: " + this.model.getPlayer2LastChoice() +  "<br>Your last score was: " + this.model.getPlayer2RoundScore() + "<br>Your total score is: " + this.model.getPlayer2TotalScore() + "<br>Your opponents' score is: " + this.model.getPlayer1TotalScore() + " </h2><br><font size='6'>Please make your choice.." + "</font><br><br>(To choose 'A' press 'K', to choose 'B' press 'L')</html>");
+					this.scoresLabel.setText("<html><h2><br><br>סבב מספר: " + this.model.getRound() + "<br>בחירתך בסבב הקודם: " + this.model.getPlayer2LastChoice() +  "<br>ניקוד שצברת בסבב הקודם: " + this.model.getPlayer2RoundScore() + "<br>סך הניקוד המצטבר שלך: " + this.model.getPlayer2TotalScore() + "<br>סך הניקוד המצטבר של היריב/ה: " + this.model.getPlayer1TotalScore() + " </h2><br><font size='6'>בבקשה בצע/י בחירתך" + "</font><br><br></html>");
 				}
 				else if (!this.model.getPlayer1Chose() && this.model.getPlayer2Chose())
 				{
-					this.scoresLabel.setText("<html><h2><br><br>Round: " + this.model.getRound() + "<br>Your last choice: " + this.model.getPlayer2LastChoice() +  "<br>Your last score was: " + this.model.getPlayer2RoundScore() + "<br>Your total score is: " + this.model.getPlayer2TotalScore() + "<br>Your opponents' score is: " + this.model.getPlayer1TotalScore()  + " </h2><br><font size='6'>You have chosen (" + this.model.getPlayer2LastChoice() + ")" + "</font><br><font size='6'> wait for the other player.." + "</font><br><br>(To choose 'A' press 'K', to choose 'B' press 'L')</html>");
+					this.scoresLabel.setText("<html><h2><br><br>סבב מספר: " + this.model.getRound() + "<br>בחירתך בסבב הקודם: " + this.model.getPlayer2LastChoice() +  "<br>ניקוד שצברת בסבב הקודם: " + this.model.getPlayer2RoundScore() + "<br>סך הניקוד המצטבר שלך: " + this.model.getPlayer2TotalScore() + "<br>סך הניקוד המצטבר של היריב/ה: " + this.model.getPlayer1TotalScore()  + " </h2><br><font size='6'>בחרת ב-(" + this.model.getPlayer2LastChoice() + ")" + "</font><br><font size='6'> אנא המתן/י לתגובת היריב.." + "</font><br><br></html>");
 				}
 				else if (this.model.getPlayer1Chose() && !this.model.getPlayer2Chose())
 				{
-					this.scoresLabel.setText("<html><h2><br><br>Round: " + this.model.getRound() + "<br>Your last choice: " + this.model.getPlayer2LastChoice() +  "<br>Your last score was: " + this.model.getPlayer2RoundScore() + "<br>Your total score is: " + this.model.getPlayer2TotalScore() + "<br>Your opponents' score is: " + this.model.getPlayer1TotalScore()  + " </h2><br><font size='6'>Please make your choice.." + "</font><br><br>(To choose 'A' press 'K', to choose 'B' press 'L')</html>");
+					this.scoresLabel.setText("<html><h2><br><br>סבב מספר: " + this.model.getRound() + "<br>בחירתך בסבב הקודם: " + this.model.getPlayer2LastChoice() +  "<br>ניקוד שצברת בסבב הקודם: " + this.model.getPlayer2RoundScore() + "<br>סך הניקוד המצטבר שלך: " + this.model.getPlayer2TotalScore() + "<br>סך הניקוד המצטבר של היריב/ה: " + this.model.getPlayer1TotalScore()  + " </h2><br><font size='6'>בבקשה בצע/י בחירתך" + "</font><br><br></html>");
 				}
 				else
 				{
-					this.scoresLabel.setText("<html><h2><br><br>Round: " + this.model.getRound() + "<br>Your last choice: " + this.model.getPlayer2LastChoice() +  "<br>Your last score was: " + this.model.getPlayer2RoundScore() + "<br>Your total score is: " + this.model.getPlayer2TotalScore() + "<br>Your opponents' score is: " + this.model.getPlayer1TotalScore()  + " </h2><br><font size='6'>Please make your choice.." + "</font><br><br>(To choose 'A' press 'K', to choose 'B' press 'L')</html>");
+					this.scoresLabel.setText("<html><h2><br><br>סבב מספר: " + this.model.getRound() + "<br>בחירתך בסבב הקודם: " + this.model.getPlayer2LastChoice() +  "<br>ניקוד שצברת בסבב הקודם: " + this.model.getPlayer2RoundScore() + "<br>סך הניקוד המצטבר שלך: " + this.model.getPlayer2TotalScore() + "<br>סך הניקוד המצטבר של היריב/ה: " + this.model.getPlayer1TotalScore()  + " </h2><br><font size='6'>בבקשה בצע/י בחירתך" + "</font><br><br></html>");
 				}
 			}
 		}

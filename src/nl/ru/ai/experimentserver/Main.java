@@ -1,4 +1,5 @@
 package nl.ru.ai.experimentserver;
+import javax.swing.JOptionPane;
 
 public class Main {
 
@@ -20,16 +21,18 @@ public class Main {
       String results_path = "Results/";
       String path = results_path + names;
 
-	  setUpGame(path, names);
-	  setUpCamera(path);
+	  GameModel model=setUpGame(path, names);
+	  setUpCamera(path,model);
   }
   
-  public static void setUpGame(String path, String names) {
+  public static GameModel setUpGame(String path, String names) {
 	  GameMain game = new GameMain(path, names);
+	  return game.model;
   }
   
-  public static void setUpCamera(String path) {
+  public static void setUpCamera(String path,GameModel model) {
 	  CameraDisplay camera = new CameraDisplay(path);
 	  camera.start();
+	  model.addObserver(camera);
   }
 }
