@@ -115,7 +115,7 @@ public class GameControl {
         }
         message1 += "\n" + "זכית ב-" + player1RoundScore + " נקודת, השחקן השני זכה ב" + player2RoundScore + " נקודות";
         message2 += "\n" + "זכית ב-" + player2RoundScore + " נקודת, השחקן השני זכה ב" + player1RoundScore + " נקודות";
-        int sleepTime = 20000;
+        int sleepTime = 2000;
         showMessage(message1, 1, 1, sleepTime);
         showMessage(message2, -500, 100, sleepTime);//TODO: fix according to lab pc
         try {
@@ -156,7 +156,6 @@ public class GameControl {
      */
     public void setPlayer1Chose(boolean bool) {
         this.model.setPlayer1Chose(bool);
-        updateScore();
     }
 
     /**
@@ -175,11 +174,14 @@ public class GameControl {
      */
     public void setPlayer2Chose(boolean bool) {
         this.model.setPlayer2Chose(bool);
-        updateScore();
     }
 
     public void refresh() {
         this.model.refresh();
 
+    }
+
+    public boolean checkCooperation() {
+        return model.checkCooperation();
     }
 }

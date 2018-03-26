@@ -95,6 +95,7 @@ public class GameDisplay extends JFrame implements Observer {
 			playerLabel.setText("<html><br><h1><br>את/ה שחקן מספר <font size='10'>1</font></h1><br><br><br><html>");
 			if (this.model.getRound() > this.model.getMaxRounds()) {
 				this.scoresLabel.setText("<html><h2><br><br>END OF GAME! :)" + "<br>בחירתך בסבב הקודם: " + this.model.getPlayer1LastChoice() + "<br>ניקוד שצברת בסבב הקודם: " + this.model.getPlayer1RoundScore() + "<br>סך הניקוד המצטבר שלך: " + this.model.getPlayer1TotalScore() + "<br>סך הניקוד המצטבר של היריב/ה: " + this.model.getPlayer2TotalScore() + " </h2><br>בבקשה בצע/י בחירתך" + "<br><br></html>");
+				System.exit(0);
 			}
 			else {
 				if (this.model.getPlayer1Chose() && this.model.getPlayer2Chose())

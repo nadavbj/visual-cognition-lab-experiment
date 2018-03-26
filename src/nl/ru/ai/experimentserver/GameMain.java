@@ -69,15 +69,13 @@ public class GameMain implements KeyListener {
 					
 					this.model.setPlayer1LastChoice("A");
 					//System.out.println('a');
-					Date d = new Date();
-					try {
-						this.writer.write(d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ":" + d.getTime() + "\tKEYPRESSED" + "\tPLAYER1" + "\tChoice: " + this.model.getPlayer1LastChoice() + "\n");
-					} 
-					catch (IOException e1) {
-						e1.printStackTrace();
-					}
-					
+					logEvent(1,'A');
+
+
 					this.control.setPlayer1Chose(true);
+					checkCooperation();
+					this.control.updateScore();
+
 				}
 				break;
 			case 's': 
@@ -85,16 +83,13 @@ public class GameMain implements KeyListener {
 					
 					this.model.setPlayer1LastChoice("B"); 
 					//System.out.println('s'); 
-					Date d = new Date();
-					try {
-						this.writer.write(d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ":" + d.getTime() + "\tKEYPRESSED" + "\tPLAYER1" + "\tChoice: " + this.model.getPlayer1LastChoice() + "\n");
-					} 
-					catch (IOException e1) 
-					{
-						e1.printStackTrace();
-					}
-					
+					logEvent(1,'B');
+
+
 					this.control.setPlayer1Chose(true);
+					checkCooperation();
+					this.control.updateScore();
+
 				}
 				break;
 			case 'k': 
@@ -102,31 +97,23 @@ public class GameMain implements KeyListener {
 					
 					this.model.setPlayer2LastChoice("A"); 
 					//System.out.println('k'); 
-					Date d = new Date();
-					try {
-						this.writer.write(d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ":" + d.getTime() + "\tKEYPRESSED" + "\tPLAYER2" + "\tChoice: " + this.model.getPlayer2LastChoice() + "\n");
-					} 
-					catch (IOException e1) {
-						e1.printStackTrace();
-					}
-					
+					logEvent(2,'A');
+
 					this.control.setPlayer2Chose(true);
+					checkCooperation();
+					this.control.updateScore();
+
 				}
 				break;
 			case 'l': 
 				if(!this.control.getPlayer2Chose()) {
 					
 					this.model.setPlayer2LastChoice("B");
-					//System.out.println('l'); 
-					Date d = new Date();
-					try {
-						this.writer.write(d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ":" + d.getTime() + "\tKEYPRESSED" + "\tPLAYER2" + "\tChoice: " + this.model.getPlayer2LastChoice() + "\n");
-					} 
-					catch (IOException e1) {
-						e1.printStackTrace();
-					}
+					logEvent(2,'B');
 
 					this.control.setPlayer2Chose(true);
+					checkCooperation();
+					this.control.updateScore();
 				}
 				break;
 			case ' ':
@@ -145,6 +132,27 @@ public class GameMain implements KeyListener {
 		}
 	}
 
+	private void checkCooperation() {
+		if(this.control.checkCooperation()){
+			Date d = new Date();
+			try {
+				this.writer.write(d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ":" + d.getTime() + "\t#cooperation\n");
+			}
+			catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
+
+	private void logEvent(int player,char choice){
+		Date d = new Date();
+		try {
+			this.writer.write(d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ":" + d.getTime() + "\tKEYPRESSED" + "\tPLAYER"+player + "\tChoice: " + choice + "\n");
+		}
+		catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
 	@Override
 	public void keyReleased(KeyEvent arg0) {}
 

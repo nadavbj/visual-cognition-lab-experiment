@@ -220,4 +220,8 @@ public class GameModel extends Observable
 		clearChanged();
 		
 	}
+
+	public boolean checkCooperation() {
+		return player1Chose&&player2Chose&&player1LastChoice==player2LastChoice;
+	}
 }
