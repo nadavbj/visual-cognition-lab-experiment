@@ -29,14 +29,18 @@ public class CameraDisplay extends Thread implements Observer {
 	private int FRAMEHEIGHT = 480;
 	private String path;
 	private boolean isRecording=false;
+	int player1x,player1y,player2x,player2y;
 
 	/**
 	 * Constructor for a new camera display (loads the opencv library)
 	 */
-	public CameraDisplay(String path) {
+	public CameraDisplay(String path, int player1x, int player1y, int player2x, int player2y) {
 		System.loadLibrary("opencv_java2413");
 		this.path = path;
-
+		this.player1x=player1x;
+		this.player1y=player1y;
+		this.player2x=player2x;
+		this.player2y=player2y;
 	}
 
 	/**
@@ -47,12 +51,13 @@ public class CameraDisplay extends Thread implements Observer {
 		JFrame frame1 = new JFrame("Camera 1");
 		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame1.setSize(this.FRAMEWIDTH, this.FRAMEHEIGHT);
+		frame1.setLocation(player1x-FRAMEWIDTH,player1y);
 
 		// Display frame 2
 		JFrame frame2 = new JFrame("Camera 2");
 		frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame2.setSize(this.FRAMEWIDTH, this.FRAMEHEIGHT);
-		frame2.setLocation(0, 450);
+		frame1.setLocation(player2x-FRAMEWIDTH,player2y);
 
 		// Display panels
 		CameraPanel cameraPanel1 = new CameraPanel();

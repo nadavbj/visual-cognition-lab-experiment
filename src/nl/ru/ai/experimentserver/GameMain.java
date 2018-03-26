@@ -25,7 +25,7 @@ public class GameMain implements KeyListener {
 	/**
 	 * Constructor for a new game
 	 */
-	public GameMain (String path, String names) {
+	public GameMain(String path, String names, int player1x, int player1y, int player2x, int player2y) {
 		//Create the writer that writes to a txt file
 		try {
 			File newDir = new File(path);
@@ -45,13 +45,15 @@ public class GameMain implements KeyListener {
 		}
 		
 		this.model = new GameModel ();
-		this.control = new GameControl (this.model, this.writer);
+		this.control = new GameControl (this.model, this.writer	, player1x,player1y,player2x,player2y);
 		
 		GameDisplay viewPlayer1 = new GameDisplay (this.model, 1);
 		viewPlayer1.setVisible(true);
+		viewPlayer1.setLocation(player1x,player1y);
 		viewPlayer1.addKeyListener(this);
 		GameDisplay viewPlayer2 = new GameDisplay (this.model, 2);
 		viewPlayer2.setVisible(true);
+		viewPlayer2.setLocation(player2x,player2y);
 		viewPlayer2.addKeyListener(this);	
 		
 		this.model.addObserver(viewPlayer1);

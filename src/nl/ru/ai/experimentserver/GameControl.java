@@ -23,16 +23,24 @@ import javax.swing.*;
 public class GameControl {
     private BufferedWriter writer;
     private GameModel model;
+    int player1x,player1y,player2x,player2y;
 
     /**
      * Constructor for a new gamecontroller
-     *
-     * @param model
+     *  @param model
      * @param writer
+     * @param player1x
+     * @param player1y
+     * @param player2x
+     * @param player2y
      */
-    public GameControl(GameModel model, BufferedWriter writer) {
+    public GameControl(GameModel model, BufferedWriter writer, int player1x, int player1y, int player2x, int player2y) {
         this.writer = writer;
         this.model = model;
+        this.player1x=player1x;
+        this.player1y=player1y;
+        this.player2x=player2x;
+        this.player2y=player2y;
     }
 
     /**
@@ -116,8 +124,8 @@ public class GameControl {
         message1 += "\n" + "זכית ב-" + player1RoundScore + " נקודת, השחקן השני זכה ב" + player2RoundScore + " נקודות";
         message2 += "\n" + "זכית ב-" + player2RoundScore + " נקודת, השחקן השני זכה ב" + player1RoundScore + " נקודות";
         int sleepTime = 2000;
-        showMessage(message1, 1, 1, sleepTime);
-        showMessage(message2, -500, 100, sleepTime);//TODO: fix according to lab pc
+        showMessage(message1, player1x, player1y, sleepTime);
+        showMessage(message2, player2x, player2y, sleepTime);
         try {
             Thread.sleep(sleepTime);
         } catch (InterruptedException e) {
