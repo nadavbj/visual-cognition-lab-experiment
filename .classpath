@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="lib/opencv-248.jar"/>
-	<classpathentry kind="lib" path="lib/jjmpeg-0.11.1a1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/Omer/eclipse_java_workspace/Experiment/commons-io-2.6/commons-io-2.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Omer/eclipse_java_workspace/Experiment/commons-io-2.6/commons-io-2.6-sources.jar"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/lib"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/commons-io-2"/>
+	<classpathentry kind="var" path="USER_HOME/Downloads/opencv2413/opencv/build/java/opencv-2413.jar" sourcepath="/USER_HOME/Downloads/opencv2413/opencv/build/java/opencv-2413.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/nadav/Downloads/opencv2413/opencv/build/java/x64"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="out/production/Experiment"/>
 </classpath>

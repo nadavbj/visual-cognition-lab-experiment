@@ -7,13 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44788c49-02ad-4e78-91e0-0c7af2daed14" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/Experiment_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+      <change beforePath="$PROJECT_DIR$/.classpath" afterPath="$PROJECT_DIR$/.classpath" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/nl/ru/ai/experimentserver/CameraDisplay.java" afterPath="$PROJECT_DIR$/src/nl/ru/ai/experimentserver/CameraDisplay.java" />
-      <change beforePath="$PROJECT_DIR$/src/nl/ru/ai/experimentserver/GameControl.java" afterPath="$PROJECT_DIR$/src/nl/ru/ai/experimentserver/GameControl.java" />
-      <change beforePath="$PROJECT_DIR$/src/nl/ru/ai/experimentserver/GameMain.java" afterPath="$PROJECT_DIR$/src/nl/ru/ai/experimentserver/GameMain.java" />
-      <change beforePath="$PROJECT_DIR$/src/nl/ru/ai/experimentserver/Main.java" afterPath="$PROJECT_DIR$/src/nl/ru/ai/experimentserver/Main.java" />
+      <change beforePath="$PROJECT_DIR$/Experiment.iml" afterPath="$PROJECT_DIR$/Experiment.iml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -182,7 +178,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -245,8 +243,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -829,7 +825,8 @@
       <workItem from="1521994444439" duration="188000" />
       <workItem from="1522055551033" duration="4871000" />
       <workItem from="1522061510983" duration="3677000" />
-      <workItem from="1522065710413" duration="41000" />
+      <workItem from="1522065710413" duration="555000" />
+      <workItem from="1522076958382" duration="108000" />
     </task>
     <task id="LOCAL-00001" summary="Video starts only when one of the players starts to play">
       <created>1521629718748</created>
@@ -852,15 +849,21 @@
       <option name="project" value="LOCAL" />
       <updated>1522062819219</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added cmd options-screen locations, results location">
+      <created>1522065850323</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1522065850323</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51246000" />
+    <option name="totallyTimeSpent" value="51868000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -936,7 +939,9 @@
     <MESSAGE value="Video starts only when one of the players starts to play" />
     <MESSAGE value="A round summary message is displayed for 2 seconds before continuing to next round" />
     <MESSAGE value="The game closes after 97 rounds&#10;#cooperation is written after two players cooperate." />
-    <option name="LAST_COMMIT_MESSAGE" value="The game closes after 97 rounds&#10;#cooperation is written after two players cooperate." />
+    <MESSAGE value="Added cmd options-screen locations, results location" />
+    <MESSAGE value="eclipse compactible" />
+    <option name="LAST_COMMIT_MESSAGE" value="eclipse compactible" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
