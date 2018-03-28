@@ -9,5 +9,12 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/nadav/Downloads/opencv2413/opencv/build/java/x64"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/commons-net-3.6"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/commons-io-2.6"/>
+	<classpathentry kind="lib" path="C:/Users/GaliaLab1/Documents/nadav/opencv/build/java/opencv-2413.jar" sourcepath="C:/Users/GaliaLab1/Documents/nadav/opencv/build/java/opencv-2413.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/GaliaLab1/Documents/nadav/opencv/build/java/x64"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="out/production/Experiment"/>
 </classpath>

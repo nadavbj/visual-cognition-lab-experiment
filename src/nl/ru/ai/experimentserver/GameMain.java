@@ -51,11 +51,13 @@ public class GameMain implements KeyListener {
 		viewPlayer1.setVisible(true);
 		viewPlayer1.setLocation(player1x,player1y);
 		viewPlayer1.addKeyListener(this);
+		viewPlayer1.setAlwaysOnTop(true);
 		GameDisplay viewPlayer2 = new GameDisplay (this.model, 2);
 		viewPlayer2.setVisible(true);
 		viewPlayer2.setLocation(player2x,player2y);
-		viewPlayer2.addKeyListener(this);	
-		
+		viewPlayer2.addKeyListener(this);
+		viewPlayer2.setAlwaysOnTop(true);
+
 		this.model.addObserver(viewPlayer1);
 		this.model.addObserver(viewPlayer2);
 	}

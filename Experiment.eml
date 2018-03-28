@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inheritJdk="true">
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="opencv-2413.jar" scope="COMPILE">
+		<srcroot url="file://$USER_HOME$/Downloads/opencv2413/opencv/build/java/opencv-2413.jar"/>
+	</lib>
+	<lib name="opencv-2413.jar" scope="COMPILE">
+		<srcroot url="jar://$MODULE_DIR$/../opencv/build/java/opencv-2413.jar!/"/>
+	</lib>
+	<levels>
+		<level name="lib" value="project"/>
+		<level name="commons-io-2" value="project"/>
+		<level name="commons-net-3.6" value="project"/>
+		<level name="commons-io-2.6" value="project"/>
+	</levels>
+</component>

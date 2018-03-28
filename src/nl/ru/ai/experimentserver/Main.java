@@ -24,6 +24,7 @@ public class Main {
 
 	  GameModel model=setUpGame(path, names,player1x,player1y,player2x,player2y);
 	  setUpCamera(path,model,player1x,player1y,player2x,player2y);
+
   }
   
   public static GameModel setUpGame(String path, String names, int player1x, int player1y, int player2x, int player2y) {
@@ -32,8 +33,12 @@ public class Main {
   }
   
   public static void setUpCamera(String path, GameModel model, int player1x, int player1y, int player2x, int player2y) {
-	  CameraDisplay camera = new CameraDisplay(path,player1x,player1y,player2x,player2y);
-	  camera.start();
-	  model.addObserver(camera);
+//TODO change to two message boxes
+	  new Thread(()->{
+	      JOptionPane.showConfirmDialog(null,"Start camera?");//TODO change text
+          CameraDisplay camera = new CameraDisplay(path,player1x,player1y,player2x,player2y);
+          camera.start();
+          //TODO add message to both players that game started
+      }).start();
   }
 }

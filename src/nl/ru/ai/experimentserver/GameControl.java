@@ -90,7 +90,7 @@ public class GameControl {
                 }
 
             }
-            showRoundSummery(model.getPlayer1RoundScore(), model.getPlayer2RoundScore(), model.getPlayer1LastChoice().charAt(0), model.getPlayer2LastChoice().charAt(0));
+            //showRoundSummery(model.getPlayer1RoundScore(), model.getPlayer2RoundScore(), model.getPlayer1LastChoice().charAt(0), model.getPlayer2LastChoice().charAt(0));
             //System.out.println("Player 1: " + model.getPlayer1LastChoice() + " " + model.getPlayer1RoundScore() + " " + model.getPlayer1TotalScore());
             //System.out.println("Player 2: " + model.getPlayer2LastChoice() + " " + model.getPlayer2RoundScore() + " " + model.getPlayer2TotalScore());
             this.model.increaseRound(1);
@@ -123,7 +123,7 @@ public class GameControl {
         }
         message1 += "\n" + "זכית ב-" + player1RoundScore + " נקודת, השחקן השני זכה ב" + player2RoundScore + " נקודות";
         message2 += "\n" + "זכית ב-" + player2RoundScore + " נקודת, השחקן השני זכה ב" + player1RoundScore + " נקודות";
-        int sleepTime = 2000;
+        int sleepTime = 20000;
         showMessage(message1, player1x, player1y, sleepTime);
         showMessage(message2, player2x, player2y, sleepTime);
         try {
@@ -134,18 +134,38 @@ public class GameControl {
     }
 
     private void showMessage(final String message, int x, int y, int time) {
-        JOptionPane pane = new JOptionPane(message,
-                JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, new Object[]{});
-        JDialog dialog = pane.createDialog(null, message);
+       /*
+        JOptionPane pane = new JOptionPane(message,JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, new Object[]{});
+        JDialog dialog = pane.createDialog(null,"סיכום הסיבוב");
         dialog.setModal(false);
         dialog.setVisible(true);
         dialog.setLocation(x, y);
+        dialog.setSize(600,400);
+        pane.repaint();
+        dialog.repaint();
         new Timer(time, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dialog.setVisible(false);
             }
-        }).start();
+        }).start();*/new Thread(()-> {
+        JFrame frame1 = new JFrame();
+        frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame1.setSize(500, 100);
+        frame1.setLocation(x, y);
+
+        JLabel button = new JLabel(message);
+        frame1.getContentPane().add(button);
+        frame1.setVisible(true);
+        frame1.repaint();
+      /*
+           try {
+               Thread.sleep(time);
+           } catch (InterruptedException e) {
+               e.printStackTrace();
+           }
+           frame1.dispose();
+       */}).start();
     }
 
     /**

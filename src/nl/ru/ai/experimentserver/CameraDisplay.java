@@ -21,12 +21,12 @@ import java.util.Observer;
  * @author Tessa Beinema
  *
  */
-public class CameraDisplay extends Thread implements Observer {
+public class CameraDisplay extends Thread {
 
 	private VideoCapture capture1;
 	private VideoCapture capture2;
-	private int FRAMEWIDTH = 640;
-	private int FRAMEHEIGHT = 480;
+	private int FRAMEWIDTH = 1920;
+	private int FRAMEHEIGHT = 1080;
 	private String path;
 	private boolean isRecording=false;
 	int player1x,player1y,player2x,player2y;
@@ -71,6 +71,7 @@ public class CameraDisplay extends Thread implements Observer {
 		System.out.println("Starting capture");
 		// Display the webcam streams
 		this.displayWebcamStream(cameraPanel1, cameraPanel2);
+		startRecording();
 	}
 	public void startRecording(){
 		isRecording=true;
@@ -96,12 +97,12 @@ public class CameraDisplay extends Thread implements Observer {
 		System.out.println("Opening streams...");
 		System.out.println("Videocapture 1 starting..");
 		this.capture1 = new VideoCapture(1);
-		this.capture1.set(Highgui.CV_CAP_PROP_FRAME_WIDTH, this.FRAMEWIDTH);
-		this.capture1.set(Highgui.CV_CAP_PROP_FRAME_HEIGHT, this.FRAMEHEIGHT);
+		this.capture1.set(Highgui.CV_CAP_PROP_FRAME_WIDTH,500);// this.FRAMEWIDTH);
+		this.capture1.set(Highgui.CV_CAP_PROP_FRAME_HEIGHT,500);// this.FRAMEHEIGHT);
 		System.out.println("Videocapture 2 starting..");
 		this.capture2 = new VideoCapture(0);
-		this.capture2.set(Highgui.CV_CAP_PROP_FRAME_WIDTH, this.FRAMEWIDTH);
-		this.capture2.set(Highgui.CV_CAP_PROP_FRAME_HEIGHT, this.FRAMEHEIGHT);
+		this.capture2.set(Highgui.CV_CAP_PROP_FRAME_WIDTH,500);// this.FRAMEWIDTH);
+		this.capture2.set(Highgui.CV_CAP_PROP_FRAME_HEIGHT,500);// this.FRAMEHEIGHT);
 		System.out.println("Streams opened.");
 
 		Date date;
@@ -143,8 +144,5 @@ public class CameraDisplay extends Thread implements Observer {
 		return;
 	}
 
-	@Override
-	public void update(Observable o, Object arg) {
-		startRecording();
-	}
+
 }
