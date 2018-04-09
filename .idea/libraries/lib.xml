@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="lib">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/libjjmpeg011.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/opencv-248.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jjmpeg-0.11.1a1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/opencv-248.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/libjjmpeg011.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -148,9 +148,9 @@ public class GameControl {
             public void actionPerformed(ActionEvent e) {
                 dialog.setVisible(false);
             }
-        }).start();*/new Thread(()-> {
-        JFrame frame1 = new JFrame();
-        frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        }).start();*/
+        ShowRoundSummary showRoundSummary=new ShowRoundSummary(message,x,y,time);
+       /*new Thread(()-> { frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame1.setSize(500, 100);
         frame1.setLocation(x, y);
 
@@ -165,7 +165,7 @@ public class GameControl {
                e.printStackTrace();
            }
            frame1.dispose();
-       */}).start();
+       }).start();*/
     }
 
     /**

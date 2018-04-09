@@ -5,15 +5,13 @@ import java.io.IOException;
 import java.util.Date;
 
 import javax.imageio.ImageIO;
-import javax.swing.JFrame;
+import javax.swing.*;
 
-import org.apache.commons.io.input.ObservableInputStream;
 import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
 import org.opencv.highgui.VideoCapture;
 
-import java.util.Observable;
-import java.util.Observer;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Class for the camera display
@@ -23,6 +21,8 @@ import java.util.Observer;
  */
 public class CameraDisplay extends Thread {
 
+
+	public static final int CAMERA_VIEW_SIZE = 500;
 	private VideoCapture capture1;
 	private VideoCapture capture2;
 	private int FRAMEWIDTH = 1920;
@@ -51,13 +51,13 @@ public class CameraDisplay extends Thread {
 		JFrame frame1 = new JFrame("Camera 1");
 		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame1.setSize(this.FRAMEWIDTH, this.FRAMEHEIGHT);
-		frame1.setLocation(player1x-FRAMEWIDTH,player1y);
+		frame1.setLocation(player1x-CAMERA_VIEW_SIZE,player1y);
 
 		// Display frame 2
 		JFrame frame2 = new JFrame("Camera 2");
 		frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame2.setSize(this.FRAMEWIDTH, this.FRAMEHEIGHT);
-		frame1.setLocation(player2x-FRAMEWIDTH,player2y);
+		frame1.setLocation(player2x- CAMERA_VIEW_SIZE,player2y);
 
 		// Display panels
 		CameraPanel cameraPanel1 = new CameraPanel();
@@ -68,6 +68,20 @@ public class CameraDisplay extends Thread {
 		frame2.setContentPane(cameraPanel2);
 		frame2.setVisible(true);
 
+		StartCameraMessageFrame startCameraMessageFrame1=
+				new StartCameraMessageFrame(player1x,player1y);
+		StartCameraMessageFrame startCameraMessageFrame2=
+				new StartCameraMessageFrame(player2x,player2y);
+
+		while (!startCameraMessageFrame1.clicked||!startCameraMessageFrame2.clicked){
+	try {
+		Thread.sleep(100);
+	} catch (InterruptedException e) {
+		e.printStackTrace();
+	}
+}
+startCameraMessageFrame1.dispose();
+startCameraMessageFrame2.dispose();
 		System.out.println("Starting capture");
 		// Display the webcam streams
 		this.displayWebcamStream(cameraPanel1, cameraPanel2);
@@ -97,12 +111,12 @@ public class CameraDisplay extends Thread {
 		System.out.println("Opening streams...");
 		System.out.println("Videocapture 1 starting..");
 		this.capture1 = new VideoCapture(1);
-		this.capture1.set(Highgui.CV_CAP_PROP_FRAME_WIDTH,500);// this.FRAMEWIDTH);
-		this.capture1.set(Highgui.CV_CAP_PROP_FRAME_HEIGHT,500);// this.FRAMEHEIGHT);
+		this.capture1.set(Highgui.CV_CAP_PROP_FRAME_WIDTH, CAMERA_VIEW_SIZE);// this.FRAMEWIDTH);
+		this.capture1.set(Highgui.CV_CAP_PROP_FRAME_HEIGHT, CAMERA_VIEW_SIZE);// this.FRAMEHEIGHT);
 		System.out.println("Videocapture 2 starting..");
 		this.capture2 = new VideoCapture(0);
-		this.capture2.set(Highgui.CV_CAP_PROP_FRAME_WIDTH,500);// this.FRAMEWIDTH);
-		this.capture2.set(Highgui.CV_CAP_PROP_FRAME_HEIGHT,500);// this.FRAMEHEIGHT);
+		this.capture2.set(Highgui.CV_CAP_PROP_FRAME_WIDTH, CAMERA_VIEW_SIZE);// this.FRAMEWIDTH);
+		this.capture2.set(Highgui.CV_CAP_PROP_FRAME_HEIGHT, CAMERA_VIEW_SIZE);// this.FRAMEHEIGHT);
 		System.out.println("Streams opened.");
 
 		Date date;
