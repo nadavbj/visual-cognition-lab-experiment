@@ -124,15 +124,13 @@ new Timer().schedule(new TimerTask() {
         message2 += "\n" + "זכית ב-" + player2RoundScore + " נקודת, השחקן השני זכה ב" + player1RoundScore + " נקודות";
         final ShowRoundSummaryFrame showRoundSummaryFrame1 =new ShowRoundSummaryFrame(message1,player1x,player1y+200);
         final ShowRoundSummaryFrame showRoundSummaryFrame2 =new ShowRoundSummaryFrame(message2,player2x,player2y+200);
-        new Thread(()->{
-        try {
-            Thread.sleep(SLEEP_TIME);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        showRoundSummaryFrame1.dispose();
-        showRoundSummaryFrame2.dispose();
-    }).start();
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                showRoundSummaryFrame1.dispose();
+                showRoundSummaryFrame2.dispose();
+            }
+        },SLEEP_TIME);
     }
 
 
