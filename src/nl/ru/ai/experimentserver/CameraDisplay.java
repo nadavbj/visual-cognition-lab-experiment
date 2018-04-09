@@ -25,8 +25,8 @@ public class CameraDisplay extends Thread {
 	public static final int CAMERA_VIEW_SIZE = 500;
 	private VideoCapture capture1;
 	private VideoCapture capture2;
-	private int FRAMEWIDTH = 1920;
-	private int FRAMEHEIGHT = 1080;
+	private int FRAMEWIDTH = 1280;
+	private int FRAMEHEIGHT = 1024;
 	private String path;
 	private boolean isRecording=false;
 	int player1x,player1y,player2x,player2y;
@@ -83,9 +83,9 @@ public class CameraDisplay extends Thread {
 startCameraMessageFrame1.dispose();
 startCameraMessageFrame2.dispose();
 		System.out.println("Starting capture");
+        startRecording();
 		// Display the webcam streams
 		this.displayWebcamStream(cameraPanel1, cameraPanel2);
-		startRecording();
 	}
 	public void startRecording(){
 		isRecording=true;

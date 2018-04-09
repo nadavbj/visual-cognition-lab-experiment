@@ -1,19 +1,9 @@
 package nl.ru.ai.experimentserver;
 
-import javax.swing.*;
-import javax.swing.border.LineBorder;
-import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
 import java.util.Date;
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.*;
 
 /**
  * Class for a game controller
@@ -124,49 +114,17 @@ public class GameControl {
         message1 += "\n" + "זכית ב-" + player1RoundScore + " נקודת, השחקן השני זכה ב" + player2RoundScore + " נקודות";
         message2 += "\n" + "זכית ב-" + player2RoundScore + " נקודת, השחקן השני זכה ב" + player1RoundScore + " נקודות";
         int sleepTime = 20000;
-        showMessage(message1, player1x, player1y, sleepTime);
-        showMessage(message2, player2x, player2y, sleepTime);
+        ShowRoundSummaryFrame showRoundSummaryFrame1 =new ShowRoundSummaryFrame(message1,player1x,player1y);
+        ShowRoundSummaryFrame showRoundSummaryFrame2 =new ShowRoundSummaryFrame(message2,player2x,player2y);
         try {
             Thread.sleep(sleepTime);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        showRoundSummaryFrame1.dispose();
+        showRoundSummaryFrame2.dispose();
     }
 
-    private void showMessage(final String message, int x, int y, int time) {
-       /*
-        JOptionPane pane = new JOptionPane(message,JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, new Object[]{});
-        JDialog dialog = pane.createDialog(null,"סיכום הסיבוב");
-        dialog.setModal(false);
-        dialog.setVisible(true);
-        dialog.setLocation(x, y);
-        dialog.setSize(600,400);
-        pane.repaint();
-        dialog.repaint();
-        new Timer(time, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dialog.setVisible(false);
-            }
-        }).start();*/
-        ShowRoundSummary showRoundSummary=new ShowRoundSummary(message,x,y,time);
-       /*new Thread(()-> { frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame1.setSize(500, 100);
-        frame1.setLocation(x, y);
-
-        JLabel button = new JLabel(message);
-        frame1.getContentPane().add(button);
-        frame1.setVisible(true);
-        frame1.repaint();
-      /*
-           try {
-               Thread.sleep(time);
-           } catch (InterruptedException e) {
-               e.printStackTrace();
-           }
-           frame1.dispose();
-       }).start();*/
-    }
 
     /**
      * Getter for the player 1 chose boolean
