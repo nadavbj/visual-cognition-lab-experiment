@@ -9,8 +9,7 @@ public class StartCameraMessageFrame extends JFrame {
 public boolean clicked=false;
     public StartCameraMessageFrame(int x,int y) {
         //disable exit button
-        setUndecorated(true);
-        getRootPane().setWindowDecorationStyle(JRootPane.NONE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 
         startBtn=new JButton("הקש על מנת להתחיל לשחק");
         startBtn.addMouseListener(new MouseAdapter() {

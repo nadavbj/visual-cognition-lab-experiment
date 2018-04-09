@@ -47,6 +47,8 @@ public class CameraDisplay extends Thread {
 	 * Method that creates the display frames with their contents.
 	 */
 	public void run() {
+		setPriority(Thread.MAX_PRIORITY);
+
 		// Display frame 1
 		JFrame frame1 = new JFrame("Camera 1");
 		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,9 +71,9 @@ public class CameraDisplay extends Thread {
 		frame2.setVisible(true);
 
 		StartCameraMessageFrame startCameraMessageFrame1=
-				new StartCameraMessageFrame(player1x,player1y);
+				new StartCameraMessageFrame(player1x+50,player1y+200);
 		StartCameraMessageFrame startCameraMessageFrame2=
-				new StartCameraMessageFrame(player2x,player2y);
+				new StartCameraMessageFrame(player2x+50,player2y+200);
 
 		while (!startCameraMessageFrame1.clicked||!startCameraMessageFrame2.clicked){
 	try {

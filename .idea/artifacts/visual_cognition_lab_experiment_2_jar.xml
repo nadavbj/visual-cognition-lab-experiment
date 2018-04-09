@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="visual-cognition-lab-experiment_2:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/visual_cognition_lab_experiment_2_jar</output-path>
+    <root id="archive" name="visual-cognition-lab-experiment_2.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/manifest/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="visual-cognition-lab-experiment_2" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../commons-io-2.6/commons-io-2.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../opencv/build/java/opencv-2413.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
