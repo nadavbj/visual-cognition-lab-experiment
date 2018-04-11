@@ -175,8 +175,4 @@ public class GameControl {
         this.model.refresh();
 
     }
-
-    public boolean checkCooperation() {
-        return model.checkCooperation();
-    }
 }

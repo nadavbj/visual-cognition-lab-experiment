@@ -25,7 +25,7 @@ public class GameModel extends Observable
 	public GameModel ()
 	{
 		this.round = 1;
-		this.MAXROUNDS = 5;
+		this.MAXROUNDS = 97;
 		this.player1RoundScore = 0;
 		this.player1TotalScore = 0;
 		this.player1LastChoice = "-";
@@ -219,10 +219,6 @@ public class GameModel extends Observable
 		notifyObservers();
 		clearChanged();
 		
-	}
-
-	public boolean checkCooperation() {
-		return player1Chose&&player2Chose&&player1LastChoice==player2LastChoice;
 	}
 
 	CameraDisplay camera;
