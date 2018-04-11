@@ -53,13 +53,14 @@ public class CameraDisplay extends Thread {
 		JFrame frame1 = new JFrame("Camera 1");
 		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame1.setSize(this.FRAMEWIDTH, this.FRAMEHEIGHT);
-		frame1.setLocation(player1x-CAMERA_VIEW_SIZE,player1y);
+		frame1.setLocation(player1x-CAMERA_VIEW_SIZE-200,player1y);
+frame1.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
 		// Display frame 2
 		JFrame frame2 = new JFrame("Camera 2");
 		frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame2.setSize(this.FRAMEWIDTH, this.FRAMEHEIGHT);
-		frame1.setLocation(player2x- CAMERA_VIEW_SIZE,player2y);
+		frame1.setLocation(player2x- CAMERA_VIEW_SIZE-200,player2y);
 
 		// Display panels
 		CameraPanel cameraPanel1 = new CameraPanel();
@@ -69,6 +70,7 @@ public class CameraDisplay extends Thread {
 		CameraPanel cameraPanel2 = new CameraPanel();
 		frame2.setContentPane(cameraPanel2);
 		frame2.setVisible(true);
+		frame2.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
 		StartCameraMessageFrame startCameraMessageFrame1=
 				new StartCameraMessageFrame(player1x+50,player1y+200);

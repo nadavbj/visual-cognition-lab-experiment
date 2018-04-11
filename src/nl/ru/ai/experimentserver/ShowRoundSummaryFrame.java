@@ -1,6 +1,7 @@
 package nl.ru.ai.experimentserver;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class ShowRoundSummaryFrame extends JFrame {
     public ShowRoundSummaryFrame(String message, int x, int y){
@@ -9,9 +10,10 @@ public class ShowRoundSummaryFrame extends JFrame {
 
 
         JLabel messageLable=new JLabel(message);
+        messageLable.setFont(new Font("david",Font.BOLD,24));
         getContentPane().add(messageLable);
         setLocation(x,y);
-        setSize(500,100);
+        setSize(700,100);
         setVisible(true);
         setAlwaysOnTop(true);
     }

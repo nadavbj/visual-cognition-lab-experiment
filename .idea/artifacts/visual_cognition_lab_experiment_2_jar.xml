@@ -8,6 +8,9 @@
       <element id="module-output" name="visual-cognition-lab-experiment_2" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../commons-io-2.6/commons-io-2.6.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../opencv/build/java/opencv-2413.jar" path-in-jar="/" />
+      <element id="file-copy" path="$PROJECT_DIR$/../opencv/build/java/x64/opencv_java2413.dll" />
+      <element id="dir-copy" path="$PROJECT_DIR$/../opencv/build/java" />
+      <element id="dir-copy" path="$PROJECT_DIR$/../opencv" />
     </root>
   </artifact>
 </component>

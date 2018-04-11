@@ -25,7 +25,7 @@ public class GameModel extends Observable
 	public GameModel ()
 	{
 		this.round = 1;
-		this.MAXROUNDS = 97;
+		this.MAXROUNDS = 5;
 		this.player1RoundScore = 0;
 		this.player1TotalScore = 0;
 		this.player1LastChoice = "-";

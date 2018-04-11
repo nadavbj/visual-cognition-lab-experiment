@@ -1,6 +1,7 @@
 package nl.ru.ai.experimentserver;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -17,6 +18,7 @@ public boolean clicked=false;
             public void mouseClicked(MouseEvent e) {
                 getContentPane().remove(startBtn);
                 JLabel waitForOtherPlayerLabel=new JLabel("המתן לתגובת השחקן השני");
+                waitForOtherPlayerLabel.setFont(new Font("david",Font.BOLD,20));
                 getContentPane().add(waitForOtherPlayerLabel);
                 waitForOtherPlayerLabel.setVisible(true);
                 clicked=true;
