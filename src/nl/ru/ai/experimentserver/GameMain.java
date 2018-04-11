@@ -140,7 +140,11 @@ public class GameMain implements KeyListener {
 		if(this.control.checkCooperation()){
 			Date d = new Date();
 			try {
-				this.writer.write(d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ":" + d.getTime() + "\t#cooperation\n");
+				this.writer.write(d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ":" + d.getTime() + "\t#cooperation");
+				if(model.getPlayer1RoundScore()>model.getPlayer2RoundScore())
+					writer.write("_2\n");
+				else
+					writer.write("_1\n");
 			}
 			catch (IOException e1) {
 				e1.printStackTrace();

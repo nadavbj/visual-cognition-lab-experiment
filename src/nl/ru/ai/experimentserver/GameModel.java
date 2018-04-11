@@ -224,4 +224,9 @@ public class GameModel extends Observable
 	public boolean checkCooperation() {
 		return player1Chose&&player2Chose&&player1LastChoice==player2LastChoice;
 	}
+
+	CameraDisplay camera;
+	public void setCamera(CameraDisplay cameraDisplay) {
+		camera=cameraDisplay;
+	}
 }
