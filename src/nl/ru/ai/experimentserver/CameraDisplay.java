@@ -11,7 +11,6 @@ import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
 import org.opencv.highgui.VideoCapture;
 
-import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Class for the camera display
@@ -143,10 +142,10 @@ startCameraMessageFrame2.dispose();
 
 						date = new Date();
 						try {
-							ImageIO.write(cameraPanel1.getBufferedImage(), "BMP", new File(path + "/cam1/" + date.getHours()
-									+ "-" + date.getMinutes() + "-" + date.getSeconds() + "-" + date.getTime() + ".bmp"));
-							ImageIO.write(cameraPanel2.getBufferedImage(), "BMP", new File(path + "/cam2/" + date.getHours()
-									+ "-" + date.getMinutes() + "-" + date.getSeconds() + "-" + date.getTime() + ".bmp"));
+							ImageIO.write(cameraPanel1.getBufferedImage(), "JPEG", new File(path + "/cam1/" + date.getHours()
+									+ "-" + date.getMinutes() + "-" + date.getSeconds() + "-" + date.getTime() + ".jpeg"));
+							ImageIO.write(cameraPanel2.getBufferedImage(), "JPEG", new File(path + "/cam2/" + date.getHours()
+									+ "-" + date.getMinutes() + "-" + date.getSeconds() + "-" + date.getTime() + ".jpeg"));
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
