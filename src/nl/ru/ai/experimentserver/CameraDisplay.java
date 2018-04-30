@@ -1,5 +1,6 @@
 package nl.ru.ai.experimentserver;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -29,6 +30,7 @@ public class CameraDisplay extends Thread {
 	private int FRAMEHEIGHT = 1024;
 	private String path;
 	private boolean isRecording=false;
+	private boolean isDisplaying=false;
 	int player1x,player1y,player2x,player2y;
 
 	/**
@@ -84,18 +86,34 @@ frame1.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		e.printStackTrace();
 	}
 }
+		// Display the webcam streams
+		this.startWebcamStream(cameraPanel1, cameraPanel2);
+		startRecording();
+for(int secondsLeft=3;secondsLeft>=1;secondsLeft--){
+	startCameraMessageFrame1.showMessage("המשחק יתחיל בעוד "+secondsLeft+"שניות");
+	startCameraMessageFrame2.showMessage("המשחק יתחיל בעוד "+secondsLeft+"שניות");
+	try {
+		Thread.sleep(1000);
+	} catch (InterruptedException e) {
+		e.printStackTrace();
+	}
+}
 startCameraMessageFrame1.dispose();
 startCameraMessageFrame2.dispose();
+startDisplaying();
 		System.out.println("Starting capture");
-        startRecording();
-		// Display the webcam streams
-		this.displayWebcamStream(cameraPanel1, cameraPanel2);
 	}
 	public void startRecording(){
 		isRecording=true;
 	}
 	public void stopRecording(){
 		isRecording=false;
+	}
+public void startDisplaying(){
+		isDisplaying=true;
+	}
+	public void stopDisplaying(){
+		isDisplaying=false;
 	}
 
 	/**
@@ -109,7 +127,9 @@ startCameraMessageFrame2.dispose();
 	 * @param faceDetector;
 	 *            Classifier for face dectection.
 	 */
-	public void displayWebcamStream(CameraPanel cameraPanel1, CameraPanel cameraPanel2) {
+	public void startWebcamStream(CameraPanel cameraPanel1, CameraPanel cameraPanel2) {
+		new Thread(()->{
+			setPriority(Thread.MAX_PRIORITY);
 		Mat webcamImage1 = new Mat();
 		Mat webcamImage2 = new Mat();
 		System.out.println("Opening streams...");
@@ -132,21 +152,23 @@ startCameraMessageFrame2.dispose();
 
 				// If images have been read from the webcam
 				if (!webcamImage1.empty() && !webcamImage2.empty()) {
-					// Display on camera panel
 					cameraPanel1.MatToBufferedImage(webcamImage1);
-					cameraPanel1.repaint();
-
 					cameraPanel2.MatToBufferedImage(webcamImage2);
-					cameraPanel2.repaint();
 
+					if(isDisplaying) {
+						// Display on camera panel
+						cameraPanel1.repaint();
+
+						cameraPanel2.repaint();
+					}
 					if(isRecording) {
 
 						date = new Date();
 						try {
-							ImageIO.write(cameraPanel1.getBufferedImage(), "BMP", new File(path + "/cam1/" + date.getHours()
-									+ "-" + date.getMinutes() + "-" + date.getSeconds() + "-" + date.getTime() + ".bmp"));
-							ImageIO.write(cameraPanel2.getBufferedImage(), "BMP", new File(path + "/cam2/" + date.getHours()
-									+ "-" + date.getMinutes() + "-" + date.getSeconds() + "-" + date.getTime() + ".bmp"));
+							ImageIO.write(cameraPanel1.getBufferedImage(), "JPEG", new File(path + "/cam1/" + date.getHours()
+									+ "-" + date.getMinutes() + "-" + date.getSeconds() + "-" + date.getTime() + ".jpeg"));
+							ImageIO.write(cameraPanel2.getBufferedImage(), "JPEG", new File(path + "/cam2/" + date.getHours()
+									+ "-" + date.getMinutes() + "-" + date.getSeconds() + "-" + date.getTime() + ".jpeg"));
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
@@ -160,6 +182,7 @@ startCameraMessageFrame2.dispose();
 			System.out.println("ERROR: Failed to open one of the webcams.");
 		}
 		return;
+		}).start();
 	}
 
 
