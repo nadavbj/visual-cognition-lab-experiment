@@ -16,14 +16,9 @@ public boolean clicked=false;
         startBtn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                getContentPane().remove(startBtn);
-                JLabel waitForOtherPlayerLabel=new JLabel("המתן לתגובת השחקן השני");
-                waitForOtherPlayerLabel.setFont(new Font("david",Font.BOLD,20));
-                getContentPane().add(waitForOtherPlayerLabel);
-                waitForOtherPlayerLabel.setVisible(true);
+showMessage("המתן לתגובת השחקן השני");
                 clicked=true;
-                // Works better than repaint()
-                setSize(249,150);
+
             }
         });
     getContentPane().add(startBtn);
@@ -32,4 +27,15 @@ public boolean clicked=false;
     setAlwaysOnTop(true);
     setVisible(true);
     }
+
+    public void showMessage(String messge) {
+        getContentPane().removeAll();
+        JLabel waitForOtherPlayerLabel=new JLabel(messge);
+        waitForOtherPlayerLabel.setFont(new Font("david",Font.BOLD,20));
+        getContentPane().add(waitForOtherPlayerLabel);
+        waitForOtherPlayerLabel.setVisible(true);
+        // Works better than repaint()
+        setSize(249,150);
+        setSize(250,150);
+            }
 }
