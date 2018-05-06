@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/visual-cognition-lab-experiment_2.iml" filepath="$PROJECT_DIR$/.idea/visual-cognition-lab-experiment_2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/visual-cognition-lab-experiment_2.iml" filepath="$PROJECT_DIR$/visual-cognition-lab-experiment_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/visual-cognition-lab-experiment.iml" filepath="$PROJECT_DIR$/visual-cognition-lab-experiment.iml" />
     </modules>
   </component>
 </project>
