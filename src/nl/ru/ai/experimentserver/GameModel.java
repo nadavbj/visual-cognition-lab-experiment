@@ -168,13 +168,22 @@ public class GameModel extends Observable
 	{
 		this.player1LastChoice = player1LastChoice;
 		if(GAME_MODE==2)
-			mockPlayer2Turn();
+			mockPlayer2Turn(player1LastChoice);
 	}
+	//TODO: Yael, change according to experiment parameters
+	private static final int cooperationPercentage =70;
 
-	private void mockPlayer2Turn() {
+	private void mockPlayer2Turn(String player1choice) {
 		Random random=new Random();
 		boolean player2BeforePlayer1=random.nextBoolean();
-		String player2choice=random.nextBoolean()?"A":"B";
+		String player2choice;
+		if(random.nextInt(100)<cooperationPercentage){
+			player2choice=player1choice;
+		}
+		else
+		{
+			player2choice=player1choice.equals("A")?"B":"A";
+		}
 		if(player2BeforePlayer1)
 		{
 			mockSetPlayer2LastChoice(player2choice);
