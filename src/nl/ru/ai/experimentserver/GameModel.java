@@ -1,6 +1,13 @@
 package nl.ru.ai.experimentserver;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Observable;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Class that represents a model for the game
  * @author Tessa Beinema
@@ -18,6 +25,8 @@ public class GameModel extends Observable
 	private String player2LastChoice;
 	private boolean player1Chose;
 	private boolean player2Chose;
+
+	public static int GAME_MODE=2;// 1 for human vs human, 2 for computer vs human
 	
 	/**
 	 * Constructor for a new game model
@@ -158,6 +167,43 @@ public class GameModel extends Observable
 	public void setPlayer1LastChoice(String player1LastChoice) 
 	{
 		this.player1LastChoice = player1LastChoice;
+		if(GAME_MODE==2)
+			mockPlayer2Turn();
+	}
+
+	private void mockPlayer2Turn() {
+		Random random=new Random();
+		boolean player2BeforePlayer1=random.nextBoolean();
+		String player2choice=random.nextBoolean()?"A":"B";
+		if(player2BeforePlayer1)
+		{
+			mockSetPlayer2LastChoice(player2choice);
+		}
+		else
+		{
+			Timer timer=new Timer();
+			int delay=random.nextInt(2000)+500;
+			timer.schedule(new TimerTask() {
+				@Override
+				public void run() {
+					mockSetPlayer2LastChoice(player2choice);
+				}
+			},delay);
+		}
+	}
+
+	private void mockSetPlayer2LastChoice(String player2choice) {
+		try {
+			Robot robot=new Robot();
+			if(player2choice.equals("A"))
+				robot.keyPress(KeyEvent.VK_K);
+		if(player2choice.equals("B"))
+				robot.keyPress(KeyEvent.VK_L);
+
+		} catch (AWTException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	/**
@@ -170,26 +216,23 @@ public class GameModel extends Observable
 	}
 
 	/**
-	 * Method that returns the total score for player 2
-	 * @return player 2 total score
-	 */
+ * Setter for the round score for player 2
+ * @param player2RoundScore
+ */
 	public void setPlayer2RoundScore(int player2RoundScore) 
 	{
 		this.player2RoundScore = player2RoundScore;
 	}
 
-	/**
-	 * Setter for the total score for player 2
-	 * @param player2TotalScore
-	 */
+
 	public int getPlayer2TotalScore() 
 	{
 		return player2TotalScore;
 	}
 
 	/**
-	 * Setter for the total score for player 2
-	 * @param player2TotalScore
+	 * Method that returns the total score for player 2
+	 * @return player 2 total score
 	 */
 	public void setPlayer2TotalScore(int player2TotalScore) 
 	{

@@ -3,6 +3,9 @@ package nl.ru.ai.experimentserver;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
@@ -88,10 +91,23 @@ public class CameraDisplay extends Thread {
 				new StartCameraMessageFrame(player1x+50,player1y+200);
 		StartCameraMessageFrame startCameraMessageFrame2=
 				new StartCameraMessageFrame(player2x+50,player2y+200);
-
+		Random random=null;
 		while (!startCameraMessageFrame1.clicked||!startCameraMessageFrame2.clicked){
 			try {
 				Thread.sleep(100);
+				if(GameModel.GAME_MODE==2){
+					if(startCameraMessageFrame1.clicked && random==null){
+						random=new Random();
+						java.util.Timer timer=new Timer();
+						int delay=random.nextInt(2000)+500;
+						timer.schedule(new TimerTask() {
+							@Override
+							public void run() {
+								startCameraMessageFrame2.clicked=true;
+							}
+						},delay);
+					}
+				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -111,7 +127,8 @@ public class CameraDisplay extends Thread {
 		}
 		startCameraMessageFrame1.dispose();
 		startCameraMessageFrame2.dispose();
-		startDisplaying();
+		if(GameModel.GAME_MODE==1)
+			startDisplaying();
 		System.out.println("Starting capture");
 	}
 	public void startRecording(){
@@ -130,17 +147,7 @@ public class CameraDisplay extends Thread {
 		isDisplaying=false;
 	}
 
-	/**
-	 * Method that captures the webcam stream and displays it with faces
-	 * detected.
-	 *
-	 * @param frame;
-	 *            The main frame.
-	 * @param cameraPanel;
-	 *            Panel that contains the camera images
-	 * @param faceDetector;
-	 *            Classifier for face dectection.
-	 */
+
 	public void startWebcamStream(CameraPanel cameraPanel1, CameraPanel cameraPanel2) {
 		new Thread(()->{
 			setPriority(Thread.MAX_PRIORITY);
